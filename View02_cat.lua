@@ -18,6 +18,7 @@ function scene:create( event )
 	if result2 then
 		ending.text="CLEAR!!"
 	else
+		composer.removeScene("View02_cat")
 		composer.gotoScene("View03_cat")
 	end
 end
@@ -47,7 +48,6 @@ function scene:hide( event )
 		-- e.g. stop timers, stop animation, unload sounds, etc.)
 	elseif phase == "did" then
 		-- Called when the scene is now off screen
-		composer.removeScene("View02_cat")
 	end
 end
 
