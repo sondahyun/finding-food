@@ -10,8 +10,15 @@ local scene = composer.newScene()
 
 function scene:create( event )
 	local sceneGroup = self.view
+
+	local section = display.newRect(display.contentWidth/2, display.contentHeight*0.8, display.contentWidth, display.contentHeight*0.3)
+	section:setFillColor(0.35, 0.35, 0.35, 0.35)
+
+	local script = display.newText("How to play:\n 방향키를 이용해 위에서 내려오는 음식을 받으세요\n 쓰레기를 받게 될 시에는 점수가 깎입니다. \n10점을 달성할 시 게임 클리어 입니다.", section.x+30, section.y-100, native.systemFontBold)
+	script.size = 45
+	script:setFillColor(1)
 	
-	local background = display.newImageRect("Content/PNG/배경.png", display.contentWidth, display.contentHeight)
+	local background = display.newImageRect("Content/PNG/bear/배경.png", display.contentWidth, display.contentHeight)
 	background.x, background.y=display.contentWidth/2, display.contentHeight/2
 
 	local score = 0
@@ -24,7 +31,7 @@ function scene:create( event )
 	floor.name = 'floor'
 	physics.addBody(floor, 'static')
 
-	local bear = display.newImageRect("Content/PNG/갈색곰.png", 200, 350)
+	local bear = display.newImageRect("Content/PNG/bear/갈색곰.png", 200, 350)
 	bear.x, bear.y = display.contentWidth*0.4, display.contentHeight*0.8
 	physics.addBody(bear, 'static')
 	bear.name = 'bear'
@@ -34,7 +41,7 @@ function scene:create( event )
 	local function spawn()
 		local objIdx = math.random(#objects)
 		local objName = objects[objIdx]
-		local object= display.newImage("Content/PNG/" .. objName .. ".png")
+		local object= display.newImage("Content/PNG/bear/" .. objName .. ".png")
 		object.x = display.contentWidth*0.5 + math.random(-500, 500)
 		object.y = 0
 		if objIdx <5 then
@@ -46,7 +53,11 @@ function scene:create( event )
 		object.name='object'
 	end
 	
-	timer1=timer.performWithDelay(1000, spawn, 0)
+	local function scriptremove(event)
+		section.alpha=0
+		script.alpha=0
+		timer1=timer.performWithDelay(1000, spawn, 0)
+	end	
 
 	local function onKeyEvent( event )
 		if event.keyName =="right" then
@@ -54,6 +65,12 @@ function scene:create( event )
 		elseif event.keyName == "left" then
 			bear.x = bear.x - 25
 		end
+	end
+
+	local function pagemove()
+		display.remove(object)
+		display.remove(floor)
+		display.remove(bear)
 	end
 
 	local function onCollision(e)
@@ -68,8 +85,11 @@ function scene:create( event )
 				showScore.text=score
 			end
 
-			if score == 2 then
+			if score<0 then
+
+			elseif score == 5 then
 				timer.cancel( timer1 )
+				pagemove()
 				composer.gotoScene( "view1" )
 			end
 		end
@@ -81,6 +101,7 @@ function scene:create( event )
 		end
 	end
 
+	section:addEventListener("tap", scriptremove)
 	Runtime:addEventListener( "key", onKeyEvent )
 	bear:addEventListener("collision", onCollision)
 	floor:addEventListener("collision", onCollision2)
