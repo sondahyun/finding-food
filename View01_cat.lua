@@ -9,85 +9,98 @@ local scene = composer.newScene()
 
 function scene:create( event )
 	local sceneGroup = self.view
-	
-	local background = display.newImageRect("Content/PNG/cat/배경.png", display.contentWidth, display.contentHeight)
-	background.x, background.y = display.contentWidth/2, display.contentHeight/2
+	local ff=0
 
-	local pond = display.newImageRect("Content/PNG/cat/스테이지2물고기.png",150*7,200*6)
-	pond.x,pond.y=display.contentWidth*0.5,display.contentHeight*0.7
+	local function makefish()
+		local background = display.newImageRect("Content/PNG/cat/배경.png", display.contentWidth, display.contentHeight)
+		background.x, background.y = display.contentWidth/2, display.contentHeight/2
 
-	local fish = { }
-	local fishGroup=display.newGroup()
+		local pond = display.newImageRect("Content/PNG/cat/스테이지2물고기.png",150*7,200*6)
+		pond.x,pond.y=display.contentWidth*0.5,display.contentHeight*0.7
 
-	for i=1,12 do
-		if i%2==0 then
-			fish[i] = display.newImage(fishGroup,"Content/PNG/cat/물고기2.png")
-		else
-			fish[i] = display.newImage(fishGroup,"Content/PNG/cat/물고기1.png")
+		local fish = { }
+		local fishGroup=display.newGroup() 
+
+		for i=1,12 do
+			if i%2==0 then
+				fish[i] = display.newImage(fishGroup,"Content/PNG/cat/물고기2.png")
+			else
+				fish[i] = display.newImage(fishGroup,"Content/PNG/cat/물고기1.png")
+			end
+			fish[i].x,fish[i].y=pond.x+math.random(-200,200),pond.y+math.random(-200,200)
 		end
-		fish[i].x,fish[i].y=pond.x+math.random(-200,200),pond.y+math.random(-200,200)
-	end
 
-	sceneGroup:insert(fishGroup)
+		sceneGroup:insert(fishGroup)
 
-	--고양이 소환--
-	local cat = display.newImageRect("Content/PNG/cat/스테이지1고양이.png",150*1.3,200*1.3)
-	cat.x,cat.y=display.contentWidth*0.7,display.contentHeight*0.4
+		--고양이 소환--
+		local cat = display.newImageRect("Content/PNG/cat/스테이지1고양이.png",150*1.3,200*1.3)
+		cat.x,cat.y=display.contentWidth*0.7,display.contentHeight*0.4
 
-	--스코어 출력--
-	local score=0
-	local showScore = display.newText(score,display.contentWidth*0.1,display.contentHeight*0.1)
-	showScore:setFillColor(0)
-	showScore.size=99
+		--스코어 출력--
+		local score=0
+		local showScore = display.newText(score,display.contentWidth*0.1,display.contentHeight*0.1)
+		showScore:setFillColor(0)
+		showScore.size=99
 
-	--레이어 정리--
-	sceneGroup:insert(background)
-	sceneGroup:insert(fishGroup)
-	sceneGroup:insert(pond)
-	
-	sceneGroup:insert(cat)
-	sceneGroup:insert(showScore)
+		--레이어 정리--
+		sceneGroup:insert(background)
+		sceneGroup:insert(fishGroup)
+		sceneGroup:insert(pond)
+		
+		sceneGroup:insert(cat)
+		sceneGroup:insert(showScore)
 
-	fishGroup:toFront()
+		fishGroup:toFront()
 
-	--탭 이벤트--
-	local function catch(event)
-		display.remove(event.target)
-		score=score+1
-		showScore.text=score
+		--탭 이벤트--
+		local function catch(event)
+			display.remove(event.target)
+			score=score+1
+			showScore.text=score
 
-		if score==12 then
-			composer.setVariable("complete",true)
-			composer.gotoScene("View02_cat")
+			if score==12 then
+				composer.setVariable("complete",true)
+				ff=2
+				composer.removeScene("View01_cat")
+				composer.gotoScene("View02_cat")
+			end
 		end
-	end
 
-	for i=1,12 do
-		fish[i]:addEventListener("tap",catch)
+		for i=1,12 do
+			fish[i]:addEventListener("tap",catch)
+		end
+		
+		-- 시간 제한 --
+
+		local result = composer.getVariable("flag")
+
+
+		local limit=6
+		local showLimit = display.newText(limit,display.contentWidth*0.9,display.contentHeight*0.1)
+		showLimit:setFillColor(0)
+		showLimit.size = 80
+		sceneGroup:insert(showLimit)
+
+		local function timeAttack(event)
+			limit = limit - 1
+			showLimit.text=limit
+
+			if limit == 0 then
+				composer.setVariable("complete",false)
+				makefish()
+				composer.gotoScene("View02_cat")
+			end
+		end
+
+		timer.performWithDelay(1000,timeAttack,0)
 	end
 	
-	-- 시간 제한 --
-
-	local result = composer.getVariable("flag")
-
-
-	local limit=5
-	local showLimit = display.newText(limit,display.contentWidth*0.9,display.contentHeight*0.1)
-	showLimit:setFillColor(0)
-	showLimit.size = 80
-	sceneGroup:insert(showLimit)
-
-	local function timeAttack(event)
-		limit = limit - 1
-		showLimit.text=limit
-
-		if limit == 0 then
-			composer.setVariable("complete",false)
-			composer.gotoScene("View02_cat")
-		end
+	if ff==0 then
+		makefish()
 	end
+	
 
-	timer.performWithDelay(1000,timeAttack,0)
+	
 end
 
 function scene:show( event )
@@ -114,7 +127,6 @@ function scene:hide( event )
 		-- INSERT code here to pause the scene
 		-- e.g. stop timers, stop animation, unload sounds, etc.)
 	elseif phase == "did" then
-		composer.removeScene("View01_cat")
 	end
 end
 
