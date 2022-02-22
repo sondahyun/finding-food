@@ -15,7 +15,7 @@ function scene:create( event )
 		local background = display.newImageRect("Content/PNG/cat/배경.png", display.contentWidth, display.contentHeight)
 		background.x, background.y = display.contentWidth/2, display.contentHeight/2
 
-		local pond = display.newCircle(display.contentWidth*0.6,display.contentHeight/2,350)
+		local pond = display.newCircle(display.contentWidth*0.5,display.contentHeight*0.7,400)
 
 		local fish = { }
 		local fishGroup=display.newGroup() 
