@@ -13,8 +13,8 @@ function scene:create( event )
 	local background = display.newImageRect("Content/PNG/cat/배경.png", display.contentWidth, display.contentHeight)
 	background.x, background.y = display.contentWidth/2, display.contentHeight/2
 
-	local pond = display.newImageRect("Content/PNG/cat/스테이지2물고기.png",150*8,200*7)
-	pond.x,pond.y=display.contentWidth*0.4,display.contentHeight*0.6
+	local pond = display.newImageRect("Content/PNG/cat/스테이지2물고기.png",150*7,200*6)
+	pond.x,pond.y=display.contentWidth*0.3,display.contentHeight*0.7
 
 	local fish = { }
 	local fishGroup=display.newGroup()
