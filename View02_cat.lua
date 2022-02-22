@@ -18,7 +18,7 @@ function scene:create( event )
 	if result then
 		ending.text="CLEAR!!"
 	else
-		ending.text="CLEAR!!FAIL!!"
+		ending.text="FAIL!!"
 	end
 end
 
