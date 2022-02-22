@@ -13,9 +13,9 @@ function scene:create( event )
 	local ending = display.newText(" ",display.contentCenterX,display.contentCenterY)
 	ending.size = 250
 
-	local result = composer.getVariable("complete")
+	local result2 = composer.getVariable("complete")
 
-	if result then
+	if result2 then
 		ending.text="CLEAR!!"
 	else
 		composer.gotoScene("View03_cat")
