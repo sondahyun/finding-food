@@ -18,7 +18,7 @@ function scene:create( event )
 	if result then
 		ending.text="CLEAR!!"
 	else
-		ending.text="FAIL!!"
+		composer.gotoScene("View03_cat")
 	end
 end
 
