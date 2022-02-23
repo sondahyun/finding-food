@@ -64,18 +64,28 @@ function scene:create( event )
 		timer1=timer.performWithDelay(1000, spawn, 0)
 	end	
 
-	local function onKeyEvent( event )
-		if event.keyName =="right" then
-			bear.x = bear.x + 25
-		elseif event.keyName == "left" then
-			bear.x = bear.x - 25
+	local function bearmove(event)
+		if(event.phase == "ended") then
+			if bear.x>=60 and bear.x<=975 then
+				if event.x < bear.x then
+					bear.x=bear.x-25
+				elseif event.x>bear.x then
+					bear.x = bear.x+25	
+				end
+			elseif bear.x<60 then
+				bear.x = 60
+			elseif bear.x >975 then
+				bear.x = 975
+			end
+
 		end
 	end
+
 
 	local function pagemove()
 		display.remove(objectGroup)
 		display.remove(floor)
-		Runtime:removeEventListener("key", onKeyEvent)
+		Runtime:removeEventListener("touch", bearmove)
 		display.remove(bear)
 	end
 
@@ -112,7 +122,7 @@ function scene:create( event )
 	end
 
 	section:addEventListener("tap", scriptremove)
-	Runtime:addEventListener( "key", onKeyEvent )
+	Runtime:addEventListener( "touch", bearmove)
 	bear:addEventListener("collision", onCollision)
 	floor:addEventListener("collision", onCollision2)
 	

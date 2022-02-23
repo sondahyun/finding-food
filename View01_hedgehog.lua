@@ -45,16 +45,27 @@ function scene:create( event )
 	local hedy={0.45, 0.33, 0.9, 0.45, 0.35, 0.1}
 	
 	local hed= { }	
+	local hedIdxs = { }
+
 	local i=1
 	local hedGroup = display.newGroup()
 
 	local function spawn()
 		local hedIdx = math.random(#hedgehog)
+		hedIdxs[i]= hedIdx
+
+		if i~=1 then
+			while hedIdxs[i-1] == hedIdx do
+				hedIdx = math.random(#hedgehog)
+			end
+		end
+		
 		local hedName = hedgehog[hedIdx]
 		hed[i] = display.newImageRect(hedGroup,"Content/PNG/고슴도치/" .. hedName .. ".png", 100, 200)
 		hed[i].x = display.contentWidth*hedx[hedIdx]
 		hed[i].y = display.contentHeight*hedy[hedIdx]
 		hed[i].name='hed'
+
 		i = i+1
 	end
 
