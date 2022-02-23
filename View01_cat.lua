@@ -31,8 +31,11 @@ function scene:create( event )
 
 		sceneGroup:insert(fishGroup)
 
+<<<<<<< Updated upstream
 		--고양이 소환--
 
+=======
+>>>>>>> Stashed changes
 		--스코어 출력--
 		local score=0
 		local showScore = display.newText(score,display.contentWidth*0.1,display.contentHeight*0.1)
