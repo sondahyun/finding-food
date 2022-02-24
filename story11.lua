@@ -37,7 +37,7 @@ function scene:create( event )
 	local section = display.newRect(display.contentWidth/2, display.contentHeight*0.8, display.contentWidth, display.contentHeight*0.3)
 	section:setFillColor(0.8, 0.8, 0.8, 0.8)
 
-	local speakerImg = display.newRect(section.x - 360, section.y - 580, 600, 600)
+	local speakerImg = display.newRect(section.x - 320, section.y - 580, 600, 600)
 
 	local speaker = display.newText("더미 텍스트", section.x-420, section.y-75)
 	speaker.size = 80
