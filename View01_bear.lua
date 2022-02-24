@@ -14,7 +14,7 @@ function scene:create( event )
 	local section = display.newRect(display.contentWidth/2, display.contentHeight*0.8, display.contentWidth, display.contentHeight*0.3)
 	section:setFillColor(0.35, 0.35, 0.35, 0.35)
 
-	local script = display.newText("How to play:\n 방향키를 이용해 위에서 내려오는 음식을 받으세요\n 쓰레기를 받게 될 시에는 점수가 깎입니다. \n10점을 달성할 시 게임 클리어 입니다.", section.x+30, section.y-100, native.systemFontBold)
+	local script = display.newText("How to play:\n위에서 내려오는 음식을 받으세요\n쓰레기를 받게 될 시에는 점수가 깎입니다. \n5점을 달성할 시 게임 클리어 입니다.", section.x+30, section.y-100, native.systemFontBold)
 	script.size = 45
 	script:setFillColor(1)
 	
