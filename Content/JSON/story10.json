@@ -6,7 +6,7 @@
 	{
 		"type": "Dialogue",
 		"speaker" : "까미",
-		"img" : "Content/PNG/script/고양이.png",
+		"img" : "Content/PNG/script/고양이_망토없음.png",
 		"content" : "왜 그러고 있어?"
 	},
 	{
@@ -18,13 +18,13 @@
 	{
 		"type": "Dialogue",
 		"speaker" : "까미",
-		"img" : "Content/PNG/script/고양이.png",
+		"img" : "Content/PNG/script/고양이_망토없음.png",
 		"content" : "인간들은 별을 보고 소원을 빈대. \n너도 한번 소원을 빌어봐"
 	},
 	{
 		"type": "Dialogue",
 		"speaker" : "까미",
-		"img" : "Content/PNG/script/고양이.png",
+		"img" : "Content/PNG/script/고양이_망토없음.png",
 		"content" : "혹시 알아? 별님이 소원을 들어줄지"
 	}
 ]
