@@ -21,7 +21,7 @@ function scene:create( event )
 		local howtoplay=display.newText("제한시간안에 클릭하여 물고기를 잡으세요!",display.contentCenterX,display.contentWidth*0.1)
 		howtoplay.size=50
 
-		local pond = display.newCircle(display.contentWidth*0.5,display.contentHeight*0.7,400)
+		local pond = display.newCircle(display.contentWidth*0.5,display.contentHeight*0.7,600)
 
 		local fish = { }
 		local fishGroup=display.newGroup() 
@@ -32,15 +32,21 @@ function scene:create( event )
 			else
 				fish[i] = display.newImage(fishGroup,"Content/PNG/cat/물고기1.png")
 			end
-			fish[i].x,fish[i].y=pond.x+math.random(-200,200),pond.y+math.random(-200,200)
+			fish[i].x,fish[i].y= pond.x+math.random(-400,200),pond.y+math.random(-400,200)
 		end
 
 		sceneGroup:insert(fishGroup)
 		--스코어 출력--
 		local score=0
-		local showScore = display.newText(score,display.contentWidth*0.1,display.contentHeight*0.1)
+		local print= display.newText("잡은 물고기 수:",display.contentWidth*0.2,display.contentHeight*0.1)
+		print:setFillColor(0)
+		print.size = 70
+		local showScore = display.newText(score,display.contentWidth*0.41,display.contentHeight*0.1)
 		showScore:setFillColor(0)
-		showScore.size=99
+		showScore.size=70
+		local print2= display.newText("마리",display.contentWidth*0.5,display.contentHeight*0.1)
+		print2:setFillColor(0)
+		print2.size = 70
 
 		--레이어 정리--
 		sceneGroup:insert(pond)
@@ -145,6 +151,8 @@ end
 scene:addEventListener( "create", scene )
 scene:addEventListener( "show", scene )
 scene:addEventListener( "hide", scene )
+scene:addEventListener( "print1", scene )
+scene:addEventListener( "print2", scene )
 scene:addEventListener( "destroy", scene )
 
 -----------------------------------------------------------------------------------------
