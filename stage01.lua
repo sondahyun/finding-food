@@ -20,10 +20,15 @@ function scene:create( event )
 	local arrowright = display.newImageRect("Content/PNG/stage/오른쪽넘기기.png",80, 80)
 	arrowright.x, arrowright.y = display.contentWidth*0.9, display.contentHeight/2
 
+	local function storymove()
+		composer.gotoScene("story01")
+	end
+
 	local function nextmove()
 		composer.gotoScene("stage02")
 	end
 
+	cat:addEventListener("tap", storymove)
 	arrowright:addEventListener("tap", nextmove)
 
 	sceneGroup:insert(background)

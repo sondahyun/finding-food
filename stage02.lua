@@ -14,8 +14,12 @@ function scene:create( event )
 	local background = display.newImageRect("Content/PNG/stage/스테이지2.png", display.contentWidth, display.contentHeight)
 	background.x, background.y=display.contentWidth/2, display.contentHeight/2
 
+	local background2 = display.newRect(display.contentWidth/2, display.contentHeight/2, display.contentWidth, display.contentHeight)
+	background2:setFillColor(0.35, 0.35, 0.35, 0.35)
+
 	local fish = display.newImageRect("Content/PNG/stage/스테이지2물고기.png", 550, 350)
 	fish.x, fish.y = display.contentWidth*0.45, display.contentHeight*0.65
+	fish.alpha=0.5
 
 	local arrowleft = display.newImageRect("Content/PNG/stage/왼쪽넘기기.png",80, 80)
 	arrowleft.x, arrowleft.y = display.contentWidth*0.1, display.contentHeight/2
@@ -23,6 +27,7 @@ function scene:create( event )
 	local arrowright = display.newImageRect("Content/PNG/stage/오른쪽넘기기.png",80, 80)
 	arrowright.x, arrowright.y = display.contentWidth*0.9, display.contentHeight/2
 	
+	local check=composer.getVariable("fishcheck")
 
 	local function beforemove()
 		composer.gotoScene("stage01")
@@ -32,11 +37,22 @@ function scene:create( event )
 		composer.gotoScene("stage03")
 	end
 
+	local function storymove()
+		composer.gotoScene("story02")
+	end
+
+	if check then
+		background2.alpha=0
+		fish.alpha=1
+		fish:addEventListener("tap", storymove)
+	end
+
 	arrowleft:addEventListener("tap", beforemove)
 	arrowright:addEventListener("tap", nextmove)
-
+	
 	sceneGroup:insert(background)
 	sceneGroup:insert(fish)
+	sceneGroup:insert(background2)
 	sceneGroup:insert(arrowright)
 	sceneGroup:insert(arrowleft)
 end

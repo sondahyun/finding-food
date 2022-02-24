@@ -14,17 +14,35 @@ function scene:create( event )
 	local background = display.newImageRect("Content/PNG/stage/스테이지5.png", display.contentWidth, display.contentHeight)
 	background.x, background.y=display.contentWidth/2, display.contentHeight/2
 
+	local background2 = display.newRect(display.contentWidth/2, display.contentHeight/2, display.contentWidth, display.contentHeight)
+	background2:setFillColor(0.35, 0.35, 0.35, 0.35)
+
 	local dog = display.newImageRect("Content/PNG/stage/스테이지5강아지.png", 300, 350)
-	dog.x, dog.y = display.contentWidth*0.2, display.contentHeight*0.55
+	dog.x, dog.y = display.contentWidth*0.35, display.contentHeight*0.56
+	dog.alpha=0.5
 
 	local cat = display.newImageRect("Content/PNG/stage/스테이지5고양이.png", 200, 450)
 	cat.x, cat.y = display.contentWidth*0.75, display.contentHeight*0.75
+	cat.alpha=0.5
 
 	local arrowleft = display.newImageRect("Content/PNG/stage/왼쪽넘기기.png",80, 80)
 	arrowleft.x, arrowleft.y = display.contentWidth*0.1, display.contentHeight/2
 
+	local dcheck=composer.getVariable("dogcheck")
+
 	local function beforemove()
 		composer.gotoScene("stage04")
+	end
+
+	local function storymove()
+		composer.gotoScene("story10")
+	end
+
+	if dcheck then
+		background2.alpha=0
+		dog.alpha=1
+		cat.alpha=1
+		dog:addEventListener("tap", storymove)
 	end
 
 	arrowleft:addEventListener("tap", beforemove)
@@ -32,6 +50,7 @@ function scene:create( event )
 	sceneGroup:insert(background)
 	sceneGroup:insert(dog)
 	sceneGroup:insert(cat)
+	sceneGroup:insert(background2)
 	sceneGroup:insert(arrowleft)
 end
 

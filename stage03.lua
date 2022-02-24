@@ -14,21 +14,25 @@ function scene:create( event )
 	local background = display.newImageRect("Content/PNG/stage/스테이지3.png", display.contentWidth, display.contentHeight)
 	background.x, background.y=display.contentWidth/2, display.contentHeight/2
 
-	local hed= display.newImageRect("Content/PNG/stage/스테이지3고슴도치.png", 200, 250)
-	hed.x, hed.y = display.contentWidth*0.73, display.contentHeight*0.7
-	hed.alpha=0.3
+	local background2 = display.newRect(display.contentWidth/2, display.contentHeight/2, display.contentWidth, display.contentHeight)
+	background2:setFillColor(0.35, 0.35, 0.35, 0.35)
+
 	local bear = display.newImageRect("Content/PNG/stage/스테이지3곰.png", 200, 350)
 	bear.x, bear.y = display.contentWidth*0.3, display.contentHeight*0.35
+	bear.alpha=0.5
 
-	if (composer.getVariable("bear")) then
-		hed.alpha=1
-	end
-
+	local hed= display.newImageRect("Content/PNG/stage/스테이지3고슴도치.png", 200, 250)
+	hed.x, hed.y = display.contentWidth*0.73, display.contentHeight*0.7
+	hed.alpha=0.5
+	
 	local arrowleft = display.newImageRect("Content/PNG/stage/왼쪽넘기기.png",80, 80)
 	arrowleft.x, arrowleft.y = display.contentWidth*0.1, display.contentHeight/2
 	
 	local arrowright = display.newImageRect("Content/PNG/stage/오른쪽넘기기.png",80, 80)
 	arrowright.x, arrowright.y = display.contentWidth*0.9, display.contentHeight/2
+
+	local bcheck=composer.getVariable("bearcheck")
+	local hcheck=composer.getVariable("hedcheck")
 
 	local function beforemove()
 		composer.gotoScene("stage02")
@@ -38,12 +42,34 @@ function scene:create( event )
 		composer.gotoScene("stage04")
 	end
 
+	local function storymove()
+		composer.gotoScene("story04")
+	end
+
+	local function storymove2()
+		composer.gotoScene("story06")
+	end
+
+	if hcheck then
+		background2.alpha=0
+		hed.alpha=1
+		bcheck=1
+		hed:addEventListener("tap", storymove2)
+	end
+
+	if bcheck then
+		background2.alpha=0
+		bear.alpha=1
+		bear:addEventListener("tap", storymove)
+	end
+	
 	arrowleft:addEventListener("tap", beforemove)
 	arrowright:addEventListener("tap", nextmove)
 
 	sceneGroup:insert(background)
 	sceneGroup:insert(hed)
 	sceneGroup:insert(bear)
+	sceneGroup:insert(background2)
 	sceneGroup:insert(arrowright)
 	sceneGroup:insert(arrowleft)
 end

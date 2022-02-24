@@ -14,14 +14,20 @@ function scene:create( event )
 	local background = display.newImageRect("Content/PNG/stage/스테이지4.png", display.contentWidth, display.contentHeight)
 	background.x, background.y=display.contentWidth/2, display.contentHeight/2
 
+	local background2 = display.newRect(display.contentWidth/2, display.contentHeight/2, display.contentWidth, display.contentHeight)
+	background2:setFillColor(0.35, 0.35, 0.35, 0.35)
+
 	local chick = display.newImageRect("Content/PNG/stage/스테이지4병아리.png", 150, 150)
 	chick.x, chick.y = display.contentWidth*0.45, display.contentHeight*0.5
+	chick.alpha=0.5
 
 	local arrowleft = display.newImageRect("Content/PNG/stage/왼쪽넘기기.png",80, 80)
 	arrowleft.x, arrowleft.y = display.contentWidth*0.1, display.contentHeight/2
 	
 	local arrowright = display.newImageRect("Content/PNG/stage/오른쪽넘기기.png",80, 80)
 	arrowright.x, arrowright.y = display.contentWidth*0.9, display.contentHeight/2
+
+	local check=composer.getVariable("chickcheck")
 
 	local function beforemove()
 		composer.gotoScene("stage03")
@@ -31,11 +37,22 @@ function scene:create( event )
 		composer.gotoScene("stage05")
 	end
 
+	local function storymove()
+		composer.gotoScene("story08")
+	end
+
+	if check then
+		background2.alpha=0
+		chick.alpha=1
+		chick:addEventListener("tap", storymove)
+	end
+
 	arrowleft:addEventListener("tap", beforemove)
 	arrowright:addEventListener("tap", nextmove)
 
 	sceneGroup:insert(background)
 	sceneGroup:insert(chick)
+	sceneGroup:insert(background2)
 	sceneGroup:insert(arrowright)
 	sceneGroup:insert(arrowleft)
 end

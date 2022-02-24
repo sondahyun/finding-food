@@ -101,13 +101,13 @@ function scene:create( event )
 	end
 
 	background:addEventListener("tap",tap)
-
 	-- 레이어 정리
 	sceneGroup:insert(background)
 	sceneGroup:insert(section)
 	sceneGroup:insert(speakerImg)
 	sceneGroup:insert(speaker)
 	sceneGroup:insert(script)
+	sceneGroup:insert(ending)
 end
 
 function scene:show( event )

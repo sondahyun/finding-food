@@ -100,14 +100,21 @@ function scene:create( event )
 		nextScript()
 	end
 
-	background:addEventListener("tap",tap)
+	local function stagetap(event)
+		composer.setVariable("dogcheck", 1)
+		composer.removeScene("stage05")
+		composer.gotoScene("stage05")
+	end
 
+	background:addEventListener("tap",tap)
+	ending:addEventListener("tap", stagetap)
 	-- 레이어 정리
 	sceneGroup:insert(background)
 	sceneGroup:insert(section)
 	sceneGroup:insert(speakerImg)
 	sceneGroup:insert(speaker)
 	sceneGroup:insert(script)
+	sceneGroup:insert(ending)
 end
 
 function scene:show( event )
