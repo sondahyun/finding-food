@@ -75,7 +75,7 @@ function scene:create( event )
 		local result = composer.getVariable("flag")
 
 
-		local limit=6
+		local limit=10
 		local showLimit = display.newText(limit,display.contentWidth*0.9,display.contentHeight*0.1)
 		showLimit:setFillColor(0)
 		showLimit.size = 80
