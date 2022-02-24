@@ -10,17 +10,25 @@ local scene = composer.newScene()
 
 function scene:create( event )
 	local sceneGroup = self.view
+	
+	local background = display.newImageRect("Content/PNG/stage/스테이지1.png", display.contentWidth, display.contentHeight)
+	background.x, background.y=display.contentWidth/2, display.contentHeight/2
 
-	local background = display.newRect(display.contentWidth/2, display.contentHeight/2, display.contentWidth, display.contentHeight)
-	background:setFillColor(0.35, 0.35, 0.35, 0.35)
+	local cat = display.newImageRect("Content/PNG/stage/스테이지1고양이.png", 300, 300)
+	cat.x, cat.y = display.contentWidth*0.35, display.contentHeight*0.65
 
-	local script = display.newText("성공!!", display.contentWidth/2, display.contentHeight/2, native.systemFontBold)
-	script.size = 45
-	script:setFillColor(1)
+	local arrowright = display.newImageRect("Content/PNG/stage/오른쪽넘기기.png",80, 80)
+	arrowright.x, arrowright.y = display.contentWidth*0.9, display.contentHeight/2
 
-	composer.setVariable("bear", 1)
+	local function nextmove()
+		composer.gotoScene("stage02")
+	end
+
+	arrowright:addEventListener("tap", nextmove)
+
 	sceneGroup:insert(background)
-	sceneGroup:insert(script)
+	sceneGroup:insert(cat)
+	sceneGroup:insert(arrowright)
 end
 
 function scene:show( event )

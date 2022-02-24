@@ -10,17 +10,34 @@ local scene = composer.newScene()
 
 function scene:create( event )
 	local sceneGroup = self.view
+	
+	local background = display.newImageRect("Content/PNG/stage/스테이지4.png", display.contentWidth, display.contentHeight)
+	background.x, background.y=display.contentWidth/2, display.contentHeight/2
 
-	local background = display.newRect(display.contentWidth/2, display.contentHeight/2, display.contentWidth, display.contentHeight)
-	background:setFillColor(0.35, 0.35, 0.35, 0.35)
+	local chick = display.newImageRect("Content/PNG/stage/스테이지4병아리.png", 150, 150)
+	chick.x, chick.y = display.contentWidth*0.45, display.contentHeight*0.5
 
-	local script = display.newText("성공!!", display.contentWidth/2, display.contentHeight/2, native.systemFontBold)
-	script.size = 45
-	script:setFillColor(1)
+	local arrowleft = display.newImageRect("Content/PNG/stage/왼쪽넘기기.png",80, 80)
+	arrowleft.x, arrowleft.y = display.contentWidth*0.1, display.contentHeight/2
+	
+	local arrowright = display.newImageRect("Content/PNG/stage/오른쪽넘기기.png",80, 80)
+	arrowright.x, arrowright.y = display.contentWidth*0.9, display.contentHeight/2
 
-	composer.setVariable("bear", 1)
+	local function beforemove()
+		composer.gotoScene("stage03")
+	end
+
+	local function nextmove()
+		composer.gotoScene("stage05")
+	end
+
+	arrowleft:addEventListener("tap", beforemove)
+	arrowright:addEventListener("tap", nextmove)
+
 	sceneGroup:insert(background)
-	sceneGroup:insert(script)
+	sceneGroup:insert(chick)
+	sceneGroup:insert(arrowright)
+	sceneGroup:insert(arrowleft)
 end
 
 function scene:show( event )

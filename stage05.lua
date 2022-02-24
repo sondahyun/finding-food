@@ -10,17 +10,29 @@ local scene = composer.newScene()
 
 function scene:create( event )
 	local sceneGroup = self.view
+	
+	local background = display.newImageRect("Content/PNG/stage/스테이지5.png", display.contentWidth, display.contentHeight)
+	background.x, background.y=display.contentWidth/2, display.contentHeight/2
 
-	local background = display.newRect(display.contentWidth/2, display.contentHeight/2, display.contentWidth, display.contentHeight)
-	background:setFillColor(0.35, 0.35, 0.35, 0.35)
+	local dog = display.newImageRect("Content/PNG/stage/스테이지5강아지.png", 300, 350)
+	dog.x, dog.y = display.contentWidth*0.2, display.contentHeight*0.55
 
-	local script = display.newText("성공!!", display.contentWidth/2, display.contentHeight/2, native.systemFontBold)
-	script.size = 45
-	script:setFillColor(1)
+	local cat = display.newImageRect("Content/PNG/stage/스테이지5고양이.png", 200, 450)
+	cat.x, cat.y = display.contentWidth*0.75, display.contentHeight*0.75
 
-	composer.setVariable("bear", 1)
+	local arrowleft = display.newImageRect("Content/PNG/stage/왼쪽넘기기.png",80, 80)
+	arrowleft.x, arrowleft.y = display.contentWidth*0.1, display.contentHeight/2
+
+	local function beforemove()
+		composer.gotoScene("stage04")
+	end
+
+	arrowleft:addEventListener("tap", beforemove)
+	
 	sceneGroup:insert(background)
-	sceneGroup:insert(script)
+	sceneGroup:insert(dog)
+	sceneGroup:insert(cat)
+	sceneGroup:insert(arrowleft)
 end
 
 function scene:show( event )
