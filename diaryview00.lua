@@ -9,6 +9,7 @@ local composer = require( "composer" )
 local scene = composer.newScene()
 
 function scene:create( event )
+	local sceneGroup = self.view
 	----------노래 재생
 	--[[local explosionSound = audio.loadSound( "Content/script/정혁준_즐거운 추억.mp3" )
 	audio.play( explosionSound )
@@ -22,9 +23,9 @@ function scene:create( event )
 		composer.removeScene("diaryview00")
 		composer.gotoScene("diaryview01")
 	end
-
 	background:addEventListener("tap",tap)
 	sceneGroup:insert(background)
+	
 	------
 end
 
