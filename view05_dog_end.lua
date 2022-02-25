@@ -1,10 +1,10 @@
 -----------------------------------------------------------------------------------------
 --
--- view03_dog_fail.lua
+-- view03_dog.lua
 --
 --
 -----------------------------------------------------------------------------------------
---
+
 local composer = require( "composer" )
 local scene = composer.newScene()
 
@@ -17,20 +17,18 @@ function scene:create( event )
 	transition.to(background1,{alpha=0.5,time=1000}) -- 배경 어둡게
 	sceneGroup:insert(background1)
 
-	local backgame =display.newImageRect("Content/PNG/fail.png",display.contentWidth/1.1,display.contentHeight/2.5) --실패할 경우
-	backgame.x, backgame.y = display.contentWidth/2, display.contentHeight/2
-	backgame.alpha = 0
-	sceneGroup:insert(backgame)
+	local result = composer.getVariable("complete")
 
-	local function retrybtntap(event)
-		composer.gotoScene("view02_dog")
+	if result then 
+		local backtomap =display.newImageRect("Content/PNG/클리어창.png",display.contentWidth/1.1,display.contentHeight/1.5) --성공할 경우
+		backtomap.x, backtomap.y = display.contentWidth/2, display.contentHeight/2
+		sceneGroup:insert(backtomap)
+		backtomap:addEventListener("touch",gomap)
+	else
+		composer.gotoScene("view03_dog_ fail")
 	end
-	
-	background:addEventListener("tap",retrybtntap)
-	
-
 	sceneGroup:insert(background1)
-	sceneGroup:insert(fail)
+	sceneGroup:insert(backtomap)
 end
 
 function scene:hide( event )

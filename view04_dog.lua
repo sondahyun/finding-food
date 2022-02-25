@@ -1,74 +1,76 @@
 -----------------------------------------------------------------------------------------
 --
--- view01_dog.lua
+-- view04_dog.lua 레벨2
 --
 -----------------------------------------------------------------------------------------
--- JSON파싱--
-local json = require("json")
-
-local Data, pos, msg
-
-local function parse()
-	local filename = system.pathForFile("Content/JSON/dog_story.json")
-	Data, pos, msg = json.decodeFile(filename)
-	if Data then
-		print(Data[1].type)
-	else
-		print(pos)
-		print(print)
-	end
-end
-parse()
-
-----
-
 local composer = require( "composer" )
 local scene = composer.newScene()
 
 function scene:create( event )
 	local sceneGroup = self.view
-	-------------------- 배경구성
+
 	local background = display.newImage( "Content/PNG/dog/background.png")
 	background.x, background.y = display.contentWidth/2, display.contentHeight/2
 
-	local section = display.newRect(display.contentWidth/2, display.contentHeight*0.95, display.contentWidth, display.contentHeight*0.2)
-	section:setFillColor(0.5, 0.5, 0.5, 0.5)
+	local starNum = 17;
+	local star = {}
+	local starGroup = display.newGroup()
 
-	local script = display.newText("더미 텍스트입니다.", section.x, section.y, display.contentWidth*0., 80)
-	script.width = display.contentWidth*0.05
-	script.size = 50
-	script:setFillColor(0)
-	------------------
+	for i = 1,starNum do
+		local num = math.random(1, 2);
+		star[i] = display.newImage(starGroup, "Content/PNG/dog/star"..num..".png")
+		star[i].x = background.x + math.random(-500, 500)
+		star[i].y = background.y + math.random(-900, 700)
+	end
 
-	------대사
-	local index = 1
-	local function nextScript( ... )
-		if(index <= #Data) then
-			
-			if( Data[index].type == "Narration") then
-				script.text = Data[index].content
-				index = index + 1
-				script:setFillColor(0.9)
-			elseif(Data[index].type == "Dialogue") then
-				script.text = Data[index].content
-				script:setFillColor(1)
-				index = index + 1
-			end
-		else
-			composer.gotoScene("view02_dog")
+	--스코어 출력 --
+	local score = 0
+	local showScore = display.newText("소원 개수: "..score, display.contentWidth*0.8, display.contentHeight*0.1)
+	showScore:setFillColor(1)
+	showScore.size = 70
+
+	local function catch(event)
+		display.remove(event.target)
+
+		score = score + 1
+		showScore.text = "소원 개수: "..score;
+		if score == starNum then
+			timer.cancel( timer1 )
+			composer.setVariable("complete", 1)
+			composer.gotoScene("view05_dog_end") 
 		end
 	end
-	nextScript()
 
-	local function tap( event )
-		nextScript()
+	for i =1,starNum do
+		star[i]:addEventListener("tap", catch)
+	end
+	--시간 제한--
+	local limit = 25
+
+	local showLimit = display.newText(limit, display.contentWidth*0.9, display.contentHeight*0.5)
+	showLimit:setFillColor(0)
+	showLimit.size = 80
+	--[[sceneGroup:insert(showLimit)--]]
+	local count = 0
+
+	local function timeAttack(event)
+		limit = limit - 1
+		showLimit.text = limit
+		print(limit)
+		if(limit <= 0) then
+			timer.cancel( timer1 )
+			composer.removeScene("view02_dog")
+			composer.gotoScene("view03_dog _fail")
+		end
 	end
 
-	background:addEventListener("tap",tap)
-	------
+	timer1=timer.performWithDelay(1000, timeAttack, 0)
+
+	
 	sceneGroup:insert(background)
-	sceneGroup:insert(section)
-	sceneGroup:insert(script)
+	sceneGroup:insert(starGroup)
+	sceneGroup:insert(showScore)
+	sceneGroup:insert(showLimit)
 end
 
 function scene:show( event )

@@ -11,9 +11,11 @@ local scene = composer.newScene()
 function scene:create( event )
 	local sceneGroup = self.view
 
-	local background = display.newRect(display.contentWidth/2, display.contentHeight/2,
-		display.contentWidth, display.contentHeight)
-	background:setFillColor(1)
+	local background1 = display.newRect(display.contentWidth/2, display.contentHeight/2, display.contentWidth, display.contentHeight)
+	
+	background1:setFillColor(0)
+	transition.to(background1,{alpha=0.5,time=1000}) -- 배경 어둡게
+	sceneGroup:insert(background1)
 	
 	local ending = display.newText("", display.contentWidth/2, display.contentHeight/2)
 	ending.size = 90
@@ -35,11 +37,11 @@ function scene:create( event )
 		composer.gotoScene("view02_dog_start") 
 	end
 	timer.performWithDelay(1000, timeAttack, 0)
-	background:addEventListener("tap",nextlevel)
+	background1:addEventListener("tap",nextlevel)
 
 	-- sceneGroup으로 묶어줌--
-	sceneGroup:insert(background)
 	sceneGroup:insert(ending)
+	sceneGroup:insert(background1)
 end
 
 function scene:hide( event )
