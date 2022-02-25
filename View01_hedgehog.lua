@@ -26,7 +26,7 @@ function scene:create( event )
 	showScore:setFillColor(0)
 	showScore.size = 50
 	
-	local cat = display.newImageRect("Content/PNG/고슴도치/고양이.png", 400, 800)
+	local cat = display.newImage("Content/PNG/고슴도치/고양이.png")
 	cat.x, cat.y = 263, 1179
 
 	local limit = 10
