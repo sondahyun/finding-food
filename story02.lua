@@ -103,7 +103,7 @@ function scene:create( event )
 	local function gametap(event)
 		audio.pause( explosionSound )
 		composer.removeScene("story02")
-		composer.gotoScene("View01_cat2")
+		composer.gotoScene("View01_cat_start")
 	end
 
 	background:addEventListener("tap",tap)

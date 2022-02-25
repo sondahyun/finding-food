@@ -29,7 +29,7 @@ function scene:create( event )
 				composer.removeScene("View02_cat")
 				composer.gotoScene( "story04" )
 		end
-		local backtomap =display.newImageRect("Content/PNG/script/stage/클리어창.png",display.contentWidth/1.1,display.contentHeight/1.5) --성공할 경우
+		local backtomap =display.newImageRect("Content/PNG/클리어창.png",display.contentWidth/1.1,display.contentHeight/1.5) --성공할 경우
 		backtomap.x, backtomap.y = display.contentWidth/2, display.contentHeight/2
 		sceneGroup:insert(backtomap)
 		backtomap:addEventListener("touch",gomap)
