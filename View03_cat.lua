@@ -5,15 +5,15 @@ local scene = composer.newScene()
 
 function scene:create( event )
 	local sceneGroup = self.view
-	--local background = display.newImageRect("Content/PNG/cat/배경.png",display.contentWidth, display.contentHeight) ---배경
-	--background.x,background.y = display.contentWidth/2,display.contentHeight/2
-	--sceneGroup:insert(background)
-	--local background1 = display.newRect(display.contentWidth/2, display.contentHeight/2, display.contentWidth, display.contentHeight)
-	--background1:setFillColor(0)
-	--transition.to(background1,{alpha=0.5,time=1000}) -- 배경 어둡게
-	--sceneGroup:insert(background1)
-
-	composer.setVariable("flag",true)
+	
+	local background = display.newImageRect("Content/PNG/cat/배경.png",display.contentWidth, display.contentHeight) ---배경
+	background.x,background.y = display.contentWidth/2,display.contentHeight/2
+	sceneGroup:insert(background)
+	
+	local background1 = display.newRect(display.contentWidth/2, display.contentHeight/2, display.contentWidth, display.contentHeight)
+	background1:setFillColor(0)
+	transition.to(background1,{alpha=0.5,time=1000}) -- 배경 어둡게
+	sceneGroup:insert(background1)
 
 	local backgame =display.newImageRect("Content/PNG/fail.png",display.contentWidth/1.1,display.contentHeight/2.5) --실패할 경우
 	backgame.x, backgame.y = display.contentWidth/2, display.contentHeight/2
@@ -24,7 +24,10 @@ function scene:create( event )
 		composer.removeScene("View03_cat")
 		composer.gotoScene("View01_cat2")
 	end
+	
 	backgame:addEventListener("tap",retrybtntap)
+	--sceneGroup:insert(backgame)
+
 end
 
 function scene:show( event )
