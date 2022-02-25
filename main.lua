@@ -13,7 +13,9 @@ local physics = require "physics"
 physics.start()
 -- event listeners for tab buttons:
 local function onFirstView( event )
+
 	composer.gotoScene( "View01_main" )
+	composer.gotoScene( "story06" )
 
 end
 
