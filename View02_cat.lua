@@ -15,16 +15,18 @@ function scene:create( event )
 
 	local result2 = composer.getVariable("complete")
 
-	if result2 then
+	if result2 == true then
 		local sceneGroup = self.view
 		local background = display.newImageRect("Content/PNG/cat/배경.png",display.contentWidth, display.contentHeight) ---배경
 		background.x,background.y = display.contentWidth/2,display.contentHeight/2
 		sceneGroup:insert(background)
 		sceneGroup:insert(background)
+
 		local background1 = display.newRect(display.contentWidth/2, display.contentHeight/2, display.contentWidth, display.contentHeight)
 		background1:setFillColor(0)
 		transition.to(background1,{alpha=0.5,time=1000}) -- 배경 어둡게
 		sceneGroup:insert(background1)
+
 		local function gomap(event) -- 게임 pass 후 넘어감
 				composer.removeScene("View02_cat")
 				composer.gotoScene( "story04" )
