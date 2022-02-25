@@ -11,14 +11,12 @@ local scene = composer.newScene()
 function scene:create( event )
 	local sceneGroup = self.view
 	-------------------- 배경구성
-	local background = display.newRect(display.contentWidth/2, display.contentHeight/2,
-		display.contentWidth, display.contentHeight)
-	background:setFillColor(1)
-	
+	local background = display.newImage( "Content/PNG/dog/밤하늘.jpg")
+	background.x, background.y = display.contentWidth/2, display.contentHeight/2
 	------------------
 	local leveltext = display.newText("", display.contentWidth/2, display.contentHeight/2)
 	leveltext.size = 90
-	leveltext:setFillColor(0)
+	leveltext:setFillColor(1)
 	local level = 2
 	leveltext.text = "Level "..level
 
