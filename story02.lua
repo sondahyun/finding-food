@@ -91,7 +91,7 @@ function scene:create( event )
 				index = index + 1
 			end
 		else
-			ending.text = "장소 이동!"
+			ending.text = "게임 시작!"
 		end
 	end
 	nextScript()
@@ -108,6 +108,7 @@ function scene:create( event )
 	sceneGroup:insert(speakerImg)
 	sceneGroup:insert(speaker)
 	sceneGroup:insert(script)
+	sceneGroup:insert(ending)
 end
 
 function scene:show( event )

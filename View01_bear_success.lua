@@ -18,6 +18,7 @@ function scene:create( event )
 	script.size = 45
 	script:setFillColor(1)
 
+	composer.setVariable("bear", 1)
 	sceneGroup:insert(background)
 	sceneGroup:insert(script)
 end

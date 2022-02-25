@@ -108,6 +108,7 @@ function scene:create( event )
 	sceneGroup:insert(speakerImg)
 	sceneGroup:insert(speaker)
 	sceneGroup:insert(script)
+	sceneGroup:insert(ending)
 end
 
 function scene:show( event )
