@@ -19,20 +19,17 @@ function scene:create( event )
 	local button1 = display.newImageRect("Content/PNG/mainPage/타이틀_시작버튼.png",150*5,200*0.8)
 	button1.x,button1.y=display.contentWidth*0.5,display.contentHeight*0.85
 
-	sceneGroup:insert(background)
-	sceneGroup:insert(button1)
 
-	--[[local function tap(event)
-		flag=0
 
-		if flag==0 then
-            composer.removeScene("view1")
-			composer.gotoScene("view2")
-		end
+	local function tap(event)
+		audio.pause(explosionSound)
+		composer.gotoScene("stage01")
 	end
 
-	button1:addEventListener("tap",tap)]]--
+	button1:addEventListener("tap",tap)
 
+	sceneGroup:insert(background)
+	sceneGroup:insert(button1)
 end
 
 function scene:show( event )

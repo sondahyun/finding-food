@@ -16,10 +16,12 @@ function scene:create( event )
 
 	local section = display.newRect(display.contentWidth/2, display.contentHeight*0.8, display.contentWidth, display.contentHeight*0.3)
 	section:setFillColor(0.35, 0.35, 0.35, 0.35)
+	section.alpha=0
 
 	local script = display.newText("How to play:\n 숨어있는 고슴도치를 찾아보세요\n 6번 찾을 시 게임 클리어 입니다.", section.x+30, section.y-100, native.systemFontBold)
 	script.size = 45
 	script:setFillColor(1)
+	script.alpha=0
 	
 	local background = display.newImageRect("Content/PNG/고슴도치/배경.png", display.contentWidth, display.contentHeight)
 	background.x, background.y=display.contentWidth/2, display.contentHeight/2
@@ -97,6 +99,8 @@ function scene:create( event )
 
 	local function titleremove(event)
 		gametitle.alpha=0
+		section.alpha=1
+		script.alpha=1
 		section:addEventListener("tap", scriptremove)
 	end	
 
