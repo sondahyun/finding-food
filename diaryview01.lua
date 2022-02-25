@@ -27,8 +27,6 @@ parse()
 
 local composer = require( "composer" )
 local scene = composer.newScene()
-local explosionSound = audio.loadSound( "Content/script/정혁준_즐거운 추억.mp3" )
-audio.play( explosionSound )
 
 function scene:create( event )
 	local sceneGroup = self.view
