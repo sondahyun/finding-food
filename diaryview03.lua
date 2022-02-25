@@ -51,7 +51,7 @@ function scene:create( event )
 
 	
 	local function nextScript()
-		if(index< #Data) then
+		if(index<=#Data) then
 			arrowleft.alpha=1
 			arrowright.alpha=1
 			if(Data[index].type == "background") then
@@ -112,13 +112,6 @@ function scene:create( event )
 	arrowleft:addEventListener("tap", tap_before)
 	arrowright:addEventListener("tap",tap_next)
 	
-	local function tap( event )
-		composer.removeScene("diaryview01")
-		composer.gotoScene("diaryview02")
-	end
-
-	background:addEventListener("tap",tap)
-
 	-- 레이어 정리
 	sceneGroup:insert(background)
 	sceneGroup:insert(speakerImg)

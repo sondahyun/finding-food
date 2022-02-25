@@ -10,9 +10,9 @@ local scene = composer.newScene()
 
 function scene:create( event )
 	----------노래 재생
-	local explosionSound = audio.loadSound( "Content/script/정혁준_즐거운 추억.mp3" )
+	--[[local explosionSound = audio.loadSound( "Content/script/정혁준_즐거운 추억.mp3" )
 	audio.play( explosionSound )
-	local sceneGroup = self.view
+	local sceneGroup = self.view--]]
 	-------------------- 배경구성
 	local background = display.newImageRect("Content/PNG/diary/일지_1.png", display.contentWidth, display.contentHeight)
 	background.x, background.y = display.contentWidth/2, display.contentHeight/2
@@ -25,7 +25,6 @@ function scene:create( event )
 
 	background:addEventListener("tap",tap)
 	sceneGroup:insert(background)
-	sceneGroup:insert(leveltext)
 	------
 end
 
