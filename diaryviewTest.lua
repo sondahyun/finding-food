@@ -40,7 +40,7 @@ function scene:create( event )
 	local speaker = display.newRect(display.contentCenterX, display.contentHeight*0.2, 700, 700)
 	local index = 1
 
-	local button2 = display.newImageRect("Content/PNG/diary/일지_닫기버튼.png",150*0.4,200*0.4)
+	local button2 = display.newImageRect("Content/PNG/diary/닫기.png",150*0.4,200*0.4)
 	button2.x,button2.y=display.contentWidth*0.95,display.contentHeight*0.05
 
 	local arrowleft=display.newImageRect("Content/PNG/diary/arrow.png",80, 80)
