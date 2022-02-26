@@ -36,7 +36,7 @@ function scene:create( event )
 	local background = display.newImageRect("Content/PNG/diary/일지_배경.png", display.contentWidth, display.contentHeight)
 	background.x, background.y = display.contentWidth/2, display.contentHeight/2
 
-	local speakerImg = display.newRect(display.contentCenterX, display.contentHeight*0.7, 900, 900)
+	local speakerImg = display.newRect(display.contentCenterX, display.contentHeight*0.7, 1000, 1000)
 	local speaker = display.newRect(display.contentCenterX, display.contentHeight*0.2, 700, 700)
 	local index = 1
 
@@ -113,10 +113,19 @@ function scene:create( event )
 	arrowleft:addEventListener("tap", tap_before)
 	arrowright:addEventListener("tap",tap_next)
 	
+	local function tap( event )
+		audio.pause( explosionSound )
+		composer.removeScene("diaryviewTest")
+		composer.gotoScene("View01_main")
+	end
+
+	button2:addEventListener("tap",tap)
 	-- 레이어 정리
 	sceneGroup:insert(background)
 	sceneGroup:insert(speakerImg)
 	sceneGroup:insert(speaker)
+	sceneGroup:insert(arrowleft)
+	sceneGroup:insert(arrowright)
 	sceneGroup:insert(button2)
 
 
