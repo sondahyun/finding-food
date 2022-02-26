@@ -25,7 +25,7 @@ function scene:create( event )
 	transition.to(background1,{alpha=0.5,time=1000}) -- 배경 어둡게
 	sceneGroup:insert(background1)
 
-	local backgame =display.newImageRect("Content/PNG/fail.png",display.contentWidth/1.1,display.contentHeight/2.5) --실패할 경우
+	local backgame =display.newImage("Content/PNG/fail.png") --실패할 경우
 	backgame.x, backgame.y = display.contentWidth/2, display.contentHeight/2
 	backgame.alpha = 1
 	sceneGroup:insert(backgame)
