@@ -91,8 +91,8 @@ function scene:create( event )
     end
 
     -- exit 버튼 생성 및 버튼에 이벤트 리스너 추가
-    local exit = display.newImageRect("Content/PNG/설정/x버튼.png", 80, 80)
-    exit.x, exit.y = display.contentWidth*0.899, display.contentHeight*0.439
+    local exit = display.newImageRect("Content/PNG/설정/닫기.png", 80, 80)
+    exit.x, exit.y = display.contentWidth*0.899, display.contentHeight*0.442
     sceneGroup:insert(exit)
     exit:addEventListener("touch",goback)
 end
