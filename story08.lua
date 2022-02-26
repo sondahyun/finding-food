@@ -54,7 +54,7 @@ function scene:create( event )
 
 	local ending = display.newImage( "Content/PNG/stage/게임시작.png")
 	ending.alpha=0
-	ending.x, ending.y = display.contentWidth*0.6, display.contentHeight/2
+	ending.x, ending.y = display.contentWidth/2, display.contentHeight/2
 
 	-----음악
 
