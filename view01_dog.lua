@@ -35,7 +35,7 @@ function scene:create( event )
 	background.x, background.y = display.contentWidth/2, display.contentHeight/2
 
 	local dog = display.newImage( "Content/PNG/script/강아지.png")
-	dog.x, dog.y = display.contentWidth*0.2, display.contentHeight*0.56
+	dog.x, dog.y = display.contentWidth*0.5, display.contentHeight*0.56
 
 	local section = display.newRect(display.contentWidth/2, display.contentHeight*0.95, display.contentWidth, display.contentHeight*0.2)
 	section:setFillColor(0.5, 0.5, 0.5, 0.5)
