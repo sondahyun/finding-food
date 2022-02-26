@@ -23,6 +23,12 @@ function scene:create( event )
 		transition.to(background1,{alpha=0.5,time=1000}) -- 배경 어둡게
 		sceneGroup:insert(background1)
 
+		--close 버튼
+		local clear_close = display.newImageRect("Content/PNG/설정/닫기.png", 150, 150)
+		clear_close.x, clear_close.y = 950, 400
+		clear_close.alpha = 1
+
+
 		local function gomap(event) -- 게임 pass 후 넘어감
 			composer.removeScene("View02_cat")
 			composer.gotoScene( "story03" )
@@ -32,7 +38,9 @@ function scene:create( event )
 		backtomap.x, backtomap.y = display.contentWidth/2, display.contentHeight/2
 		sceneGroup:insert(backtomap)
 
-		backtomap:addEventListener("touch",gomap)
+		clear_close:addEventListener("touch",gomap)
+
+		sceneGroup:insert(clear_close)
 	else
 		composer.removeScene("View02_cat")
 		composer.gotoScene("View03_cat")

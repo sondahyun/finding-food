@@ -15,9 +15,9 @@ function scene:create( event )
 	transition.to(background1,{alpha=0.5,time=1000}) -- 배경 어둡게
 	sceneGroup:insert(background1)
 
-	local close = display.newImageRect("Content/PNG/설정/닫기.png", 150, 150)
-	close.x, close.y = 950, 400
-	sceneGroup:insert(close)
+	local fail_close = display.newImageRect("Content/PNG/설정/닫기.png", 150, 150)
+	fail_close.x, fail_close.y = 950, 800
+	fail_close.alpha = 1
 
 	local score3 = composer.getVariable("score")
 
@@ -30,8 +30,8 @@ function scene:create( event )
 		composer.removeScene("View03_cat")
 		composer.gotoScene("View01_cat2")
 	end
-	
-	backgame:addEventListener("tap",retrybtntap)
+	sceneGroup:insert(fail_close)
+	fail_close:addEventListener("tap",retrybtntap)
 end
 
 function scene:show( event )
