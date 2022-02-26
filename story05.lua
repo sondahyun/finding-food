@@ -52,7 +52,7 @@ function scene:create( event )
 	script.size = 50
 	script:setFillColor(0)
 
-	local ending = display.newImage( "Content/PNG/stage/게임시작.png")
+	local ending = display.newImage( "Content/PNG/stage/장소이동.png")
   	ending.alpha=0
   	ending.x, ending.y = display.contentWidth*0.5, display.contentHeight/2 - 600
 
