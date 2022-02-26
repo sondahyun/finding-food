@@ -31,8 +31,15 @@ function scene:create( event )
 		end
 	end
 
-	local close = display.newImageRect("Content/PNG/설정/닫기.png", 150, 150)
-	close.x, close.y = 950, 400
+	--close 버튼
+	local clear_close = display.newImageRect("Content/PNG/설정/닫기.png", 150, 150)
+	clear_close.x, clear_close.y = 950, 400
+	clear_close.alpha = 0
+	
+
+	local fail_close = display.newImageRect("Content/PNG/설정/닫기.png", 150, 150)
+	fail_close.x, fail_close.y = 950, 800
+	fail_close.alpha = 0
 	
 	
 	local function gomap(event) -- 게임 pass 후 넘어감
@@ -44,6 +51,7 @@ function scene:create( event )
 
 	local backtomap =display.newImageRect("Content/PNG/클리어창.png",display.contentWidth/1.1,display.contentHeight/1.5) --성공할 경우
 	backtomap.x, backtomap.y = display.contentWidth/2, display.contentHeight/2
+	backtomap.alpha = 0
 	sceneGroup:insert(backtomap)
 	
 
@@ -54,13 +62,16 @@ function scene:create( event )
 
 	if score3 < 0 then
 		backgame.alpha = 1
-		backtomap.alpha = 0
-		close:addEventListener("touch",backtogame)
+		fail_close.alpha = 1
+		fail_close:addEventListener("touch",backtogame)
 	else
-		close:addEventListener("touch", gomap)
+		backtomap.alpha = 1
+		clear_close.alpha = 1
+		clear_close:addEventListener("touch",gomap)
 	end
+	sceneGroup:insert(fail_close)
+	sceneGroup:insert(clear_close)
 
-	sceneGroup:insert(close)
 
 end
 
