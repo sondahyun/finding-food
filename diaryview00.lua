@@ -21,7 +21,7 @@ function scene:create( event )
 	------------------
 	local function tap( event )
 		composer.removeScene("diaryview00")
-		composer.gotoScene("diaryview01")
+		composer.gotoScene("diaryviewTest")
 	end
 	background:addEventListener("tap",tap)
 	sceneGroup:insert(background)
