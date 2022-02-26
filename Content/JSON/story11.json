@@ -7,7 +7,11 @@
 	},
 	{
 		"type" : "Narration",
-		"content" : "코코는 꼬리를 엄청 흔들다가\n 엉덩이까지 씰룩거리며 주인을 반겼습니다."
+		"content" : "코코는 꼬리를 엄청 흔들다가"
+	},
+	{
+		"type" : "Narration",
+		"content" : "엉덩이까지 씰룩거리며 주인을 반겼습니다."
 	},
 	{
 		"type": "Dialogue",
@@ -17,23 +21,43 @@
 	},
 	{
 		"type" : "Narration",
-		"content" : "코코는 주인에게 달려가서 주인의\n얼굴이 침 범벅이 될 때까지 핥았습니다."
+		"content" : "코코는 주인에게 달려가서 주인의"
+	},
+	{
+		"type" : "Narration",
+		"content" : "얼굴이 침 범벅이 될 때까지 핥았습니다."
 	},
 	{
 		"type": "Dialogue",
 		"speaker" : "까미",
 		"img" : "Content/PNG/script/고양이_망토없음.png",
-		"content" : " 다들 원하는바를 이뤘는데\n나만 못 이뤘네.. 너무 배고프다… "
+		"content" : " 다들 원하는바를 이뤘는데"
+	},
+	{
+		"type": "Dialogue",
+		"speaker" : "까미",
+		"img" : "Content/PNG/script/고양이_망토없음.png",
+		"content" : "나만 못 이뤘네.. 너무 배고프다… "
 	},
 	{
 		"type" : "Narration",
-		"content" : "까미는 위쪽에서 이름을 부르는 소리가\n들렸고 고개를 위로 들었습니다."
+		"content" : "까미는 위쪽에서 이름을 부르는 소리가"
+	},
+	{
+		"type" : "Narration",
+		"content" : "들렸고 고개를 위로 들었습니다."
 	},
 	{
 		"type": "Dialogue",
 		"speaker" : "삑삐",
 		"img" : "Content/PNG/script/병아리_망토.png",
-		"content" : "까미야 네 망토를 돌려주러 왔어! \n넌 우리에게 행복을  선물해 주었잖아"
+		"content" : "까미야 네 망토를 돌려주러 왔어!"
+	},
+	{
+		"type": "Dialogue",
+		"speaker" : "삑삐",
+		"img" : "Content/PNG/script/병아리_망토.png",
+		"content" : "넌 우리에게 행복을  선물해 주었잖아"
 	},
 	{
 		"type": "Dialogue",
@@ -43,7 +67,11 @@
 	},
 	{
 		"type" : "Narration",
-		"content" : "다시 앞을 보니 까미 앞에는 오늘 하룻동안 \n봤던 동물들 모두가 다 모여있습니다."
+		"content" : "다시 앞을 보니 까미 앞에는 오늘 하룻동안"
+	},
+	{
+		"type" : "Narration",
+		"content" : "봤던 동물들 모두가 다 모여있습니다."
 	},
 	{
 		"type": "Dialogue",
@@ -69,15 +97,25 @@
 		"img" : "Content/PNG/script/강아지_기쁨.png",
 		"content" : "도로명 주소를 외워서 괜찮아"
 	},
-		{
+	{
 		"type" : "Narration",
-		"content" : "까미는 자신을 위해 모여준 \n친구들에게 진심으로 감동받았습니다."
+		"content" : "까미는 자신을 위해 모여준"
+	},
+	{
+		"type" : "Narration",
+		"content" : "친구들에게 진심으로 감동받았습니다."
 	},
 	{
 		"type": "Dialogue",
 		"speaker" : "까미",
 		"img" : "Content/PNG/script/고양이.png",
-		"content" : "얘들아 고마워 너희 \n덕분에 나 역시 소원을 이뤘네"
+		"content" : "얘들아 고마워 너희"
+	},
+	{
+		"type": "Dialogue",
+		"speaker" : "까미",
+		"img" : "Content/PNG/script/고양이.png",
+		"content" : "덕분에 나 역시 소원을 이뤘네"
 	},
 	{
 		"type": "Dialogue",

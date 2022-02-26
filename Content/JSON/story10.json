@@ -1,7 +1,11 @@
 [
 	{
 		"type" : "Narration",
-		"content" : "아무것도 먹지 못하고 다시 살던 동네로 돌아온 까미는\n 저 멀리서 낑낑대고 있는 강아지가 눈에 띄었습니다."
+		"content" : "아무것도 먹지 못하고 다시 살던 동네로 돌아온 까미는"
+	},
+	{
+		"type" : "Narration",
+		"content" : "저 멀리서 낑낑대고 있는 강아지가 눈에 띄었습니다."
 	},
 	{
 		"type": "Dialogue",
@@ -13,13 +17,25 @@
 		"type": "Dialogue",
 		"speaker" : "강아지",
 		"img" : "Content/PNG/script/강아지.png",
-		"content" : " 내 주인이 보이지 않아… \n어떻게 해야할지 모르겠어"
+		"content" : " 내 주인이 보이지 않아… "
+	},
+	{
+		"type": "Dialogue",
+		"speaker" : "강아지",
+		"img" : "Content/PNG/script/강아지.png",
+		"content" : "어떻게 해야할지 모르겠어"
 	},
 	{
 		"type": "Dialogue",
 		"speaker" : "까미",
 		"img" : "Content/PNG/script/고양이_망토없음.png",
-		"content" : "인간들은 별을 보고 소원을 빈대. \n너도 한번 소원을 빌어봐"
+		"content" : "인간들은 별을 보고 소원을 빈대. "
+	},
+	{
+		"type": "Dialogue",
+		"speaker" : "까미",
+		"img" : "Content/PNG/script/고양이_망토없음.png",
+		"content" : "너도 한번 소원을 빌어봐"
 	},
 	{
 		"type": "Dialogue",
