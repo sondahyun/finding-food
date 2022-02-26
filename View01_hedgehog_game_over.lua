@@ -43,7 +43,7 @@ function scene:create( event )
 	sceneGroup:insert(backtomap)
 	backtomap:addEventListener("touch",gomap)
 
-	local backgame =display.newImageRect("Content/PNG/fail.png",display.contentWidth/1.1,display.contentHeight/2.5) --실패할 경우
+	local backgame =display.newImage("Content/PNG/fail.png") --실패할 경우
 	backgame.x, backgame.y = display.contentWidth/2, display.contentHeight/2
 	backgame.alpha = 0
 	sceneGroup:insert(backgame)
