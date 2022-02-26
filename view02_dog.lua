@@ -76,10 +76,10 @@ function scene:create( event )
 
 	
 	sceneGroup:insert(background)
-	sceneGroup:insert(starGroup)
 	sceneGroup:insert(showScore)
 	sceneGroup:insert(dog)
 	sceneGroup:insert(showLimit)
+	sceneGroup:insert(starGroup)
 end
 
 function scene:show( event )
