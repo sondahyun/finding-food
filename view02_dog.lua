@@ -16,7 +16,7 @@ function scene:create( event )
 	--audio.play( explosionSound )
 	
 	local dog = display.newImage( "Content/PNG/dog/강아지.png")
-	dog.x, dog.y = display.contentWidth/2, display.contentHeight*0.8
+	dog.x, dog.y = display.contentWidth/2, display.contentHeight*0.85
 
 	local starNum = 15;
 	local star = {}
@@ -31,7 +31,7 @@ function scene:create( event )
 
 	--스코어 출력 --
 	local score = 0
-	local showScore = display.newText("소원 개수: "..score, display.contentWidth*0.8, display.contentHeight*0.1)
+	local showScore = display.newText("소원 개수: "..score, display.contentWidth*0.2, display.contentHeight*0.9)
 	showScore:setFillColor(1)
 	showScore.size = 70
 
@@ -54,7 +54,7 @@ function scene:create( event )
 	--시간 제한--
 	local limit = 30
 
-	local showLimit = display.newText(limit, display.contentWidth*0.9, display.contentHeight*0.5)
+	local showLimit = display.newText(limit, display.contentWidth*0.9, display.contentHeight*0.9)
 	showLimit:setFillColor(1)
 	showLimit.size = 80
 	--[[sceneGroup:insert(showLimit)--]]
