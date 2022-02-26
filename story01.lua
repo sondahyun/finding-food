@@ -44,6 +44,7 @@ function scene:create( event )
 	local speakerImg = display.newRect(section.x - 360, section.y - 580, 600, 600)
 
 	local speaker = display.newText("더미 텍스트", section.x-290, section.y-75)
+	speaker.width = display.contentWidth
 	speaker.size = 70
 	speaker:setFillColor(0)
 
@@ -52,9 +53,9 @@ function scene:create( event )
 	script.size = 50
 	script:setFillColor(0)
 
-	local ending = display.newImage( "Content/PNG/stage/장소이동.png")
-	ending.alpha=0
-	ending.x, ending.y = display.contentWidth*0.6, display.contentHeight/2
+	local ending = display.newText("", display.contentWidth/2, display.contentHeight/2)
+	ending.size = 90
+	ending:setFillColor(1)
 
 	-----음악
 
@@ -119,7 +120,7 @@ function scene:create( event )
 				index = index + 1
 			end
 		else
-			ending.alpha=1
+			ending.text = "장소 이동!"
 		end
 	end
 	nextScript()
