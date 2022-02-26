@@ -52,9 +52,9 @@ function scene:create( event )
 	script.size = 55
 	script:setFillColor(0)
 
-	local ending = display.newText("", display.contentWidth/2, display.contentHeight/2)
-	ending.size = 90
-	ending:setFillColor(1)
+	local ending = display.newImage( "Content/PNG/stage/장소이동.png")
+	ending.alpha=0
+	ending.x, ending.y = display.contentWidth/2, display.contentHeight/2
 
 	-----음악
 
@@ -121,7 +121,7 @@ function scene:create( event )
 				index = index + 1
 			end
 		else
-			ending.text = "장소 이동!"
+			ending.alpha=1
 		end
 	end
 	nextScript()
