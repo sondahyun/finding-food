@@ -31,7 +31,16 @@ function scene:create( event )
 
 		local function gomap(event) -- 게임 pass 후 넘어감
 			composer.removeScene("View02_cat")
-			composer.gotoScene( "story03" )
+			composer.gotoScene("story", {
+				params = {
+					jsonFile    = "Content/JSON/story03.json",
+					initBg      = "Content/PNG/script/background/개울1.png",
+					music       = "Content/PNG/script/계곡물 흐르는 소리.mp3",
+					endingImg   = "Content/PNG/stage/장소이동.png",
+					nextScene   = "stage03",
+					setVariable = { key = "bearcheck", value = 1 },
+				}
+			})
 		end
 
 		local backtomap =display.newImageRect("Content/PNG/클리어창.png",display.contentWidth/1.1,display.contentHeight/1.5) --성공할 경우

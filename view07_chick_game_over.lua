@@ -48,9 +48,18 @@ function scene:create( event )
 	end
 
 	local function gomap(event) -- 게임 pass 후 넘어감
-		if event.phase == "began" then--view20ring
+		if event.phase == "began" then
 				composer.removeScene("view07_chick_game_over")
-				composer.gotoScene( "story09" )
+				composer.gotoScene("story", {
+					params = {
+						jsonFile    = "Content/JSON/story09.json",
+						initBg      = "Content/PNG/script/background/오후들판.png",
+						music       = "Content/PNG/script/Click Clock.mp3",
+						endingImg   = "Content/PNG/stage/장소이동.png",
+						nextScene   = "stage05",
+						setVariable = { key = "dogcheck", value = 1 },
+					}
+				})
 		end
 	end
 

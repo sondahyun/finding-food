@@ -43,7 +43,15 @@ function scene:create( event )
 	end
 
 	local function storymove()
-		composer.gotoScene("story10")
+		composer.gotoScene("story", {
+			params = {
+				jsonFile    = "Content/JSON/story10.json",
+				initBg      = "Content/PNG/script/background/저녁시골.png",
+				music       = "Content/PNG/script/City Key.mp3",
+				endingImg   = "Content/PNG/stage/게임시작.png",
+				nextScene   = "view00_dog_start",
+			}
+		})
 	end
 
 	local function storymove2()

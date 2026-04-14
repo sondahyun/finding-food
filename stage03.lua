@@ -47,11 +47,27 @@ function scene:create( event )
 
 	local function storymove()
 		composer.removeScene("stage03")
-		composer.gotoScene("story04")
+		composer.gotoScene("story", {
+			params = {
+				jsonFile    = "Content/JSON/story04.json",
+				initBg      = "Content/PNG/script/background/산속.png",
+				music       = "Content/PNG/script/Groove.MP3",
+				endingImg   = "Content/PNG/stage/게임시작.png",
+				nextScene   = "View01_bear",
+			}
+		})
 	end
 
 	local function storymove2()
-		composer.gotoScene("story06")
+		composer.gotoScene("story", {
+			params = {
+				jsonFile    = "Content/JSON/story06.json",
+				initBg      = "Content/PNG/script/background/산2.png",
+				music       = "Content/PNG/script/kingdomhreats.mp3",
+				endingImg   = "Content/PNG/stage/게임시작.png",
+				nextScene   = "View01_hedgehog",
+			}
+		})
 	end
 
 	if hcheck then

@@ -41,7 +41,15 @@ function scene:create( event )
 	end
 
 	local function storymove()
-		composer.gotoScene("story08")
+		composer.gotoScene("story", {
+			params = {
+				jsonFile    = "Content/JSON/story08.json",
+				initBg      = "Content/PNG/script/background/오후들판.png",
+				music       = "Content/PNG/script/Click Clock.mp3",
+				endingImg   = "Content/PNG/stage/게임시작.png",
+				nextScene   = "view04_chick_game_start",
+			}
+		})
 	end
 
 	if check then

@@ -23,7 +23,16 @@ function scene:create( event )
 	arrowright.x, arrowright.y = display.contentWidth*0.9, display.contentHeight/2
 
 	local function storymove()
-		composer.gotoScene("story01")
+		composer.gotoScene("story", {
+			params = {
+				jsonFile    = "Content/JSON/story01.json",
+				initBg      = "Content/PNG/script/background/시골3.png",
+				music       = "Content/PNG/script/다시그곳으로.mp3",
+				endingImg   = "Content/PNG/stage/장소이동.png",
+				nextScene   = "stage02",
+				setVariable = { key = "fishcheck", value = 1 },
+			}
+		})
 	end
 
 	local function nextmove()
